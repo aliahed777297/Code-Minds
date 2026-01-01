@@ -1,0 +1,7 @@
+.contact-hero{padding:28px 0;text-align:right}
+.contact-hero h1{font-size:1.6rem;color:#0D9488;margin-bottom:6px}
+.contact-form-wrap{margin-top:16px}
+.contact-form-wrap form{background:#fff;padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.04);max-width:720px}
+.contact-form-wrap label{display:block;margin-top:10px;color:#334155}
+.contact-form-wrap input,.contact-form-wrap textarea{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px;margin-top:6px}
+.contact-form-wrap button{margin-top:12px}

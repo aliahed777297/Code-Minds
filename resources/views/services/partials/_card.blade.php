@@ -1,3 +1,4 @@
+{{-- Updated by: زياد الشاوش — قمت بتحديث واجهة services --}}
 <article class="service-card" role="article" aria-labelledby="service-{{ $service->id }}">
     <a class="card-link" href="{{ route('service.show', $service->id) }}">
         <div class="card-media" aria-hidden="true">

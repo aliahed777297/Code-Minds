@@ -52,7 +52,7 @@
     <div class="services-grid" aria-live="polite">
         <div class="service-card fade-in" role="article">
             <h3>خدمة تجريبية A</h3>
-            <p>وصف بسيط للخدمة. هذه واجهة عرض فقط.</p>
+            <p>وصف بسيط للخدمة. gddd واجهة عرض فقط.</p>
             <div class="meta"><span>المدة: 30 دقيقة</span><span>المراتب: ⭐️⭐️⭐️⭐️</span></div>
             <div class="price">49.00 ر.س</div>
             <div class="actions">

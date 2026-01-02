@@ -2,29 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactMessageRequest;
 use App\Models\ContactMessage;
-use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    // صفحة الإدارة
+    public function index()
+    {
+        $messages = ContactMessage::latest()->paginate(20);
+
+        return view('contact.admin', compact('messages'));
+    }
+
+    // صفحة نموذج التواصل
     public function show()
     {
         return view('contact.index');
     }
 
-    public function store(Request $request)
+    // حفظ الرسالة
+    public function store(StoreContactMessageRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:191',
-            'email' => 'nullable|email|max:191',
-            'phone' => 'nullable|string|max:32',
-            'message' => 'required|string',
-        ]);
+        // البيانات validated وجاهزة
+        $message = ContactMessage::create($request->validated());
 
-        $msg = ContactMessage::create($data);
-
-        if ($request->ajax() || $request->wantsJson()) {
-            return response()->json(['message' => 'تم استلام رسالتك، سنتواصل معك قريباً', 'id' => $msg->id]);
+        // دعم JSON / AJAX
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'تم استلام رسالتك، سنتواصل معك قريباً',
+                'id' => $message->id,
+            ]);
         }
 
         return back()->with('success', 'تم استلام رسالتك، سنتواصل معك قريباً');

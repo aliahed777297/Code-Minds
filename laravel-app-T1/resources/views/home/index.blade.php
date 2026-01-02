@@ -20,6 +20,12 @@
                     <p class="hero-subtitle">
                         خدمات غسيل وكي وتنظيف جاف بجودة عالية   
                     </p>
+                    <div class="hero-cta">
+                        <a href="{{ route('services.index') }}" class="cta-button">
+                            اكتشف خدماتنا الآن
+                            <span class="arrow-icon" aria-hidden="true">→</span>
+                        </a>
+                    </div>
                 </div>
             </header>
 
@@ -30,7 +36,7 @@
                         {{-- Slide 1 --}}
                         <article class="glb-slide" data-glb-slide aria-label="1 من 4">
                             <div class="glb-media">
-                                <img class="glb-img" src="/images/gallery/service-dryclean.jpg" alt="تنظيف جاف احترافي">
+                                <img class="glb-img" src="/images/gallery/s1.png" alt="تنظيف جاف احترافي">
                             </div>
                             <div class="glb-overlay" aria-hidden="true"></div>
 
@@ -48,7 +54,7 @@
                         {{-- Slide 2 --}}
                         <article class="glb-slide" data-glb-slide aria-label="2 من 4">
                             <div class="glb-media">
-                                <img class="glb-img" src="/images/gallery/service-washfold.jpg" alt="غسيل وكوي يومي">
+                                <img class="glb-img" src="/images/gallery/s2.png" alt="غسيل وكوي يومي">
                             </div>
                             <div class="glb-overlay" aria-hidden="true"></div>
 
@@ -65,7 +71,7 @@
                         {{-- Slide 3 --}}
                         <article class="glb-slide" data-glb-slide aria-label="3 من 4">
                             <div class="glb-media">
-                                <img class="glb-img" src="/images/gallery/service-sanitize.jpg" alt="تعقيم وتنظيف آمن">
+                                <img class="glb-img" src="/images/gallery/s3.png" alt="تعقيم وتنظيف آمن">
                             </div>
                             <div class="glb-overlay" aria-hidden="true"></div>
 
@@ -82,7 +88,7 @@
                         {{-- Slide 4 --}}
                         <article class="glb-slide" data-glb-slide aria-label="4 من 4">
                             <div class="glb-media">
-                                <img class="glb-img" src="/images/gallery/service-delivery.jpg" alt="استلام وتسليم سريع">
+                                <img class="glb-img" src="/images/gallery/s4.png" alt="استلام وتسليم سريع">
                             </div>
                             <div class="glb-overlay" aria-hidden="true"></div>
 
@@ -164,7 +170,7 @@
     </section>
 
     {{-- 3) Laundry Work Gallery --}}
-    section class="home-gallery" aria-label="معرض أعمال المغسلة">
+    <section class="home-gallery" aria-label="معرض أعمال المغسلة">
   <div class="container">
     <header class="section-head">
       <h2 class="section-title">معرض الأعمال</h2>

@@ -36,6 +36,9 @@
       mImageWrap.style.display = 'none';
     }
 
+    // Set service ID for the form
+    document.getElementById('modal-service-id').value = data.id || '';
+
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
@@ -61,11 +64,11 @@
   });
 
   modal.addEventListener('click', (e) => {
-    if (e.target?.dataset?.close) closeModal();
+    if (e.target?.hasAttribute('data-close')) closeModal();
   });
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
   });
-})();
-
+})
+();

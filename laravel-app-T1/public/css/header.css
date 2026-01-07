@@ -299,7 +299,7 @@ button:focus {
 
 /* ✅ FIXED */
 .mobile-overlay {
-  position:none; /* was: none (invalid) */
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 9998;
@@ -544,5 +544,6 @@ button:focus {
     animation: none !important;
     transform: none !important;
     filter: none !important;
+    opacity: 1 !important;
   }
 }

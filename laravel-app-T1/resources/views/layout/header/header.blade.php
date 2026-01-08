@@ -36,12 +36,7 @@
                     </a>
                 </li>
 
-                <li class="{{ request()->routeIs('about') ? 'active' : '' }}">
-                    <a href="{{ route('about') }}" aria-label="من نحن">
-                        <i class="fas fa-users"></i>
-                        <span>من نحن</span>
-                    </a>
-                </li>
+             
 
                 <li class="{{ request()->routeIs('cart.*') ? 'active' : '' }}">
                     <a href="{{ route('cart.index') }}" aria-label="السلة">
@@ -58,6 +53,13 @@
                     <a href="{{ route('orders.index') }}" aria-label="الطلبات">
                         <i class="fas fa-receipt"></i>
                         <span>الطلبات</span>
+                    </a>
+                </li>
+
+                   <li class="{{ request()->routeIs('about') ? 'active' : '' }}">
+                    <a href="{{ route('about') }}" aria-label="من نحن">
+                        <i class="fas fa-users"></i>
+                        <span>من نحن</span>
                     </a>
                 </li>
 

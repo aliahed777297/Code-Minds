@@ -20,6 +20,12 @@
                     <p class="hero-subtitle">
                         خدمات غسيل وكي وتنظيف جاف بجودة عالية   
                     </p>
+                    <div class="hero-cta">
+                        <a href="{{ route('services.index') }}" class="cta-button">
+                            اكتشف خدماتنا الآن
+                            <span class="arrow-icon" aria-hidden="true">→</span>
+                        </a>
+                    </div>
                 </div>
             </header>
 
@@ -30,7 +36,7 @@
                         {{-- Slide 1 --}}
                         <article class="glb-slide" data-glb-slide aria-label="1 من 4">
                             <div class="glb-media">
-                                <img class="glb-img" src="/images/gallery/service-dryclean.jpg" alt="تنظيف جاف احترافي">
+                                <img class="glb-img" src="/images/gallery/1.png" alt="تنظيف جاف احترافي">
                             </div>
                             <div class="glb-overlay" aria-hidden="true"></div>
 

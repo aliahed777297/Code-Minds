@@ -9,10 +9,22 @@ return new class extends Migration {
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+
+            // اسم الخدمة
             $table->string('name');
+
+            // ✅ اسم ملف الصورة فقط (مثال: service-delivery.jpg)
+            $table->string('image')->nullable();
+
+            // وصف الخدمة
             $table->text('description')->nullable();
+
+            // السعر
             $table->decimal('price', 10, 2);
+
+            // مدة الخدمة بالدقائق
             $table->smallInteger('duration_minutes')->nullable();
+
             $table->timestamps();
         });
     }

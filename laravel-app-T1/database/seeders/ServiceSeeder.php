@@ -18,7 +18,7 @@ class ServiceSeeder extends Seeder
                 'duration_minutes' => 24,
             ],
             [
-                'name' => 'تنظيف المجلخات',
+                'name' => 'تنظيف جاف',
                 'image' => 'images/service-dryclean.jpg', // صورة للتنظيف الجاف - يمكن تغييرها إلى صورة أخرى إذا لزم الأمر
                 'description' => 'خدمة تنظيف متقدمة للقطع الحساسة والبقع الصعبة.',
                 'price' => 35.00,

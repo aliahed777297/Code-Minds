@@ -1,0 +1,565 @@
+/* ===========================================
+   🌟 التصميم العام - Global Styles
+   تصميم احترافي وجذاب للموقع
+   =========================================== */
+
+@import url('colors.css');
+@import url('typography.css');
+@import url('layout.css');
+
+/* إعادة تعيين المتصفحات - Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.site-footer {
+  margin-top: 40px;
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* ===========================================
+   🎨 الأزرار المحسنة - Enhanced Buttons (iOS-style)
+   =========================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  padding: var(--spacing-12) var(--spacing-24);
+  border-radius: var(--radius-12);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  min-height: 44px; /* iOS touch target minimum */
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* أحجام الأزرار - Button Sizes */
+.btn-sm {
+  padding: var(--spacing-8) var(--spacing-16);
+  font-size: var(--text-body-small);
+  min-height: 36px;
+  border-radius: var(--radius-8);
+}
+
+.btn-lg {
+  padding: var(--spacing-16) var(--spacing-32);
+  font-size: var(--text-body-large);
+  min-height: 52px;
+  border-radius: var(--radius-16);
+}
+
+/* أنماط الأزرار - Button Variants */
+.btn-ghost {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background: var(--primary-color);
+  color: var(--text-white);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: var(--bg-secondary);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-secondary {
+  background: var(--gradient-secondary);
+}
+
+.btn-success {
+  background: var(--success-color);
+}
+
+.btn-danger {
+  background: var(--error-color);
+}
+
+/* ===========================================
+   🎯 البطاقات المحسنة - Enhanced Cards (iOS-style)
+   =========================================== */
+
+.card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-16);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: var(--spacing-24);
+  margin-bottom: var(--spacing-24);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-header {
+  margin-bottom: var(--spacing-16);
+  padding-bottom: var(--spacing-12);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.card-title {
+  font-size: var(--text-heading-4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-heading);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.card-subtitle {
+  font-size: var(--text-body-small);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.card-content {
+  margin-bottom: var(--spacing-16);
+}
+
+.card-footer {
+  margin-top: var(--spacing-16);
+  padding-top: var(--spacing-12);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+/* أحجام البطاقات - Card Sizes */
+.card-sm {
+  padding: var(--spacing-16);
+}
+
+.card-lg {
+  padding: var(--spacing-32);
+}
+
+/* أنماط البطاقات - Card Variants */
+.card-elevated {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.card-outlined {
+  box-shadow: none;
+  border: 2px solid var(--border-light);
+}
+
+.card-filled {
+  background: var(--bg-secondary);
+}
+
+/* ===========================================
+   🔄 الرسائل والتنبيهات - Alerts & Messages
+   =========================================== */
+
+.flash.success {
+  background: var(--success-bg);
+  padding: var(--spacing-md);
+  border: 1px solid var(--success-border);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--success-color);
+  color: var(--success-color);
+}
+
+/* ===========================================
+   📋 النماذج - Forms
+   =========================================== */
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  transition: var(--transition-fast);
+  background: var(--bg-primary);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+/* ===========================================
+   📊 الجداول - Tables
+   =========================================== */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-lg);
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.table th,
+.table td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.table tbody tr:hover {
+  background: var(--bg-tertiary);
+}
+
+/* ===========================================
+   🎪 النوافذ المنبثقة - Modals
+   =========================================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal-panel {
+  position: relative;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  z-index: 70;
+  max-width: 720px;
+  width: 96%;
+  box-shadow: var(--shadow-xl);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.modal.open .modal-panel {
+  transform: none;
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  left: var(--spacing-sm);
+  top: var(--spacing-sm);
+  background: transparent;
+  border: 0;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+/* ===========================================
+   🍞 التنبيهات - Toasts
+   =========================================== */
+
+.toast-container {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: var(--spacing-lg);
+  z-index: 80;
+}
+
+.toast {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  margin-top: var(--spacing-xs);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.36s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===========================================
+   🎪 الرسوم المتحركة - Animations
+   =========================================== */
+
+.elevate {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.elevate:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.fade-in {
+  animation: fadeIn 0.36s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+/* ===========================================
+   📱 التصميم المتجاوب المحسن - Enhanced Responsive Design (iOS-style)
+   =========================================== */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: var(--spacing-20);
+    padding-right: var(--spacing-20);
+  }
+  .btn {
+    padding: var(--spacing-10) var(--spacing-20);
+    font-size: var(--text-body);
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 15px; /* Slightly smaller base font size for mobile */
+  }
+  .container {
+    padding-left: var(--spacing-16);
+    padding-right: var(--spacing-16);
+  }
+  .section {
+    padding-top: var(--spacing-48);
+    padding-bottom: var(--spacing-48);
+  }
+  .btn {
+    padding: var(--spacing-12) var(--spacing-24);
+    font-size: var(--text-body);
+    min-height: 48px; /* Larger touch targets on mobile */
+  }
+  .btn-sm {
+    padding: var(--spacing-10) var(--spacing-20);
+    min-height: 40px;
+  }
+  .card {
+    padding: var(--spacing-20);
+  }
+  .card-sm {
+    padding: var(--spacing-16);
+  }
+  .modal-panel {
+    width: 98%;
+    padding: var(--spacing-16);
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    padding-left: var(--spacing-12);
+    padding-right: var(--spacing-12);
+  }
+  .section {
+    padding-top: var(--spacing-32);
+    padding-bottom: var(--spacing-32);
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-14) var(--spacing-24);
+    min-height: 52px; /* Even larger touch targets */
+  }
+  .btn-sm {
+    padding: var(--spacing-12) var(--spacing-20);
+    min-height: 44px;
+  }
+  .card {
+    padding: var(--spacing-16);
+    margin-bottom: var(--spacing-16);
+  }
+  /* Stack flex items vertically on small screens */
+  .trust-stats {
+    flex-direction: column;
+    gap: var(--spacing-16);
+  }
+  .service-card .actions {
+    flex-direction: column;
+    gap: var(--spacing-8);
+  }
+  .service-card form {
+    flex-direction: column;
+    width: 100%;
+  }
+  .service-card input[type="number"] {
+    width: 100%;
+    margin-bottom: var(--spacing-8);
+  }
+}
+@media (max-width: 480px) {
+  html {
+    font-size: 14px; /* Smaller base font size for very small screens */
+  }
+  .container {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+  }
+  .section {
+    padding-top: var(--spacing-24);
+    padding-bottom: var(--spacing-24);
+  }
+  .btn {
+    padding: var(--spacing-16) var(--spacing-20);
+    font-size: var(--text-body-large);
+  }
+  .card {
+    padding: var(--spacing-12);
+    border-radius: var(--radius-12);
+  }
+  .form-control {
+    padding: var(--spacing-12);
+  }
+}
+/* ===========================================
+   ♿ إمكانية الوصول - Accessibility Enhancements
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    border: 2px solid currentColor;
+  }
+  .card {
+    border: 2px solid var(--border-medium);
+  }
+}
+/* Focus indicators for keyboard navigation */
+.btn:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

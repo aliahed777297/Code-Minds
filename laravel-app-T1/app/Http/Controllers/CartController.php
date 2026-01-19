@@ -14,7 +14,6 @@ class CartController extends Controller
         $items = CartItem::with('service')->where('session_id', $sessionId)->get();
         $total = $items->sum(function($i){ return $i->quantity * $i->price_at_add; });
         return view('cart.index', compact('items','total'));
-
     }
 
     // Return JSON count for header badge
@@ -97,17 +96,5 @@ class CartController extends Controller
         }
 
         return back()->with('success', 'تم حذف العنصر');
-    }
-
-    public function checkout()
-    {
-        $sessionId = session()->getId();
-        $items = CartItem::where('session_id', $sessionId)->get();
-
-        if ($items->isEmpty()) {
-            return redirect()->route('cart.index')->with('error', 'السلة فارغة');
-        }
-
-        return redirect()->route('order.confirm');
     }
 }

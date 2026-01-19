@@ -14,4 +14,5 @@ class InvoiceController extends Controller
     }
 
     // Optional: download as PDF (not implemented here)
+    
 }

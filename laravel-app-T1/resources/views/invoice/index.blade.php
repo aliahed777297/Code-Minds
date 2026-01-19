@@ -1,31 +1,23 @@
 @extends('layout.main')
-@push('styles')
-    <link rel="stylesheet" href="/css/invoice.css">
-@endpush
 @section('content')
-    <h1>فاتورة الطلب #{{ $order->id }}</h1>
+    <h1>فاتورة (عرض فقط)</h1>
     <div class="customer">
-        <p>الاسم: {{ $order->customer_name }}</p>
-        <p>الهاتف: {{ $order->customer_phone }}</p>
-        @if($order->customer_address)
-            <p>العنوان: {{ $order->customer_address }}</p>
-        @endif
-        <p>التاريخ: {{ $order->created_at->format('Y-m-d H:i') }}</p>
+        <p>الاسم: زبون تجريبي</p>
+        <p>الهاتف: 0500000000</p>
+        <p>التاريخ: 2025-12-30 12:00</p>
     </div>
     <table class="invoice-table">
         <thead>
             <tr><th>الخدمة</th><th>الكمية</th><th>سعر الوحدة</th><th>المجموع</th></tr>
         </thead>
         <tbody>
-            @foreach($order->items as $item)
-                <tr>
-                    <td>{{ $item->service->name }}</td>
-                    <td>{{ $item->quantity }}</td>
-                    <td>{{ number_format($item->price, 2) }}</td>
-                    <td>{{ number_format($item->subtotal, 2) }}</td>
-                </tr>
-            @endforeach
+            <tr>
+                <td>خدمة تجريبية</td>
+                <td>1</td>
+                <td>49.00</td>
+                <td>49.00</td>
+            </tr>
         </tbody>
     </table>
-    <div class="invoice-total">الإجمالي: {{ number_format($order->total_price, 2) }} ر.س</div>
+    <div class="invoice-total">الإجمالي: 49.00 ر.س</div>
 @endsection

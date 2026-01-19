@@ -1,0 +1,285 @@
+/* ===========================================
+   🧭 تصميم شريط التنقل - Navigation Header
+   تصميم احترافي وعصري
+   =========================================== */
+
+.navbar {
+  background: var(--bg-primary);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-normal);
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* ===========================================
+   🏷️ العلامة التجارية - Brand Logo
+   =========================================== */
+
+.brand {
+  float: right;
+  font-weight: 800;
+  margin-left: var(--spacing-sm);
+  color: var(--primary-color);
+  transition: var(--transition-normal);
+  font-size: var(--font-size-xl);
+  text-decoration: none;
+  position: relative;
+}
+
+.brand::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition-normal);
+}
+
+.brand:hover {
+  transform: translateY(-2px);
+  color: var(--primary-hover);
+}
+
+.brand:hover::before {
+  width: 100%;
+}
+
+/* ===========================================
+   📋 قائمة التنقل - Navigation Links
+   =========================================== */
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--spacing-sm);
+  float: left;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  position: relative;
+  display: inline-block;
+  transition: var(--transition-normal);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  transform: scaleX(0.2);
+  transform-origin: right center;
+  transition: var(--transition-normal);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-4px);
+  background: rgba(13, 148, 136, 0.05);
+}
+
+.nav-links a:hover::after {
+  background: rgba(13, 148, 136, 0.14);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.nav-links a.active {
+  color: var(--primary-color);
+  font-weight: 700;
+  background: rgba(13, 148, 136, 0.1);
+}
+
+.nav-links a.active::after {
+  background: var(--gradient-primary);
+  transform: scaleX(1);
+  transform-origin: left center;
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.12);
+}
+
+.nav-links a.pulse {
+  animation: navPulse 0.6s ease;
+}
+
+@keyframes navPulse {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-6px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ===========================================
+   📱 زر القائمة للموبايل - Mobile Menu Toggle
+   =========================================== */
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.nav-toggle:focus {
+  outline: 2px solid rgba(13, 148, 136, 0.2);
+  outline-offset: 2px;
+}
+
+.nav-toggle:hover {
+  background: rgba(13, 148, 136, 0.1);
+  color: var(--primary-color);
+}
+
+.nav-toggle.open {
+  transform: rotate(90deg);
+  background: rgba(13, 148, 136, 0.06);
+}
+
+/* ===========================================
+   🛒 شارة سلة التسوق - Cart Badge
+   =========================================== */
+
+.cart-badge {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  margin-inline-start: var(--spacing-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===========================================
+   📱 التصميم المتجاوب - Responsive Design
+   =========================================== */
+
+@media (max-width: 920px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    right: var(--spacing-sm);
+    top: 64px;
+    background: var(--bg-primary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    flex-direction: column;
+    min-width: 200px;
+    gap: var(--spacing-xs);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-links.open {
+    display: flex;
+    animation: menuOpen 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes menuOpen {
+    from {
+      opacity: 0;
+      transform: scale(0.96) translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .brand {
+    float: none;
+    display: inline-block;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .navbar {
+    padding: var(--spacing-sm) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    right: var(--spacing-xs);
+    min-width: 180px;
+    padding: var(--spacing-sm);
+  }
+
+  .brand {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ===========================================
+   🌟 تأثيرات خاصة - Special Effects
+   =========================================== */
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(13, 148, 136, 0.02) 50%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition-normal);
+  pointer-events: none;
+}
+
+.navbar:hover::before {
+  opacity: 1;
+}
+
+/* تأثير الشريط المنزلق للروابط النشطة */
+.nav-links a.active {
+  position: relative;
+}
+
+.nav-links a.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}

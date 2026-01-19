@@ -16,7 +16,7 @@ class OrderSeeder extends Seeder
 
         $order = Order::create([
             'session_id' => 'seed-session',
-            'customer_name' => 'عميل يمني',
+            'customer_name' => 'عميل تجريبي',
             'customer_phone' => '0500000000',
             'customer_address' => 'شارع الاختبار، المدينة',
             'total_price' => 0,

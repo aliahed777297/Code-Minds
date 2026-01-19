@@ -1,0 +1,6 @@
+.about-hero{background:linear-gradient(90deg, rgba(13,148,136,0.08), rgba(13,148,136,0.02));padding:36px 0;text-align:right}
+.about-hero h1{font-size:1.8rem;color:#0D9488;margin-bottom:8px}
+.about-hero p{color:#475569;margin-bottom:12px}
+.about-values{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.about-values .card{background:#fff;padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.04)}
+.about-values .card h3{color:#0D9488;margin-top:0}

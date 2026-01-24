@@ -1,3 +1,46 @@
+/* Invoice styles - clean and print-friendly */
+:root{
+    --primary:#0F766E;
+    --muted:#6b7280;
+    --bg:#f7fafb;
+    --card:#ffffff;
+}
+
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:#0f1724;margin:0}
+
+.invoice-container{max-width:1100px;margin:28px auto;padding:20px}
+
+.invoice-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand h2{margin:0;font-size:1.4rem;color:var(--primary);font-weight:800}
+.brand-sub{color:var(--muted);font-size:0.95rem}
+
+.invoice-card{background:linear-gradient(180deg,var(--card),#fbfcfd);border-radius:12px;padding:20px;box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+.invoice-top{display:flex;justify-content:space-between;gap:18px;margin-bottom:16px}
+.bill-to h4{margin:0 0 6px 0}
+.bill-to .name{font-weight:700}
+.invoice-meta{color:var(--muted);text-align:right}
+
+.invoice-table-wrap{overflow:auto;margin-top:6px}
 .invoice-table{width:100%;border-collapse:collapse;margin-top:12px}
-.invoice-table th,.invoice-table td{border:1px solid #eee;padding:8px;text-align:right}
-.invoice-total{font-size:1.1rem;font-weight:800;margin-top:12px}
+.invoice-table th,.invoice-table td{padding:12px 10px;border-bottom:1px solid #f3f4f6}
+.invoice-table thead th{background:transparent;text-align:left;color:#111827;font-weight:700}
+
+.w-60{width:60%}.w-15{width:15%}.w-10{width:10%}
+.text-right{text-align:right}.text-center{text-align:center}
+
+.desc{font-weight:700;color:#0f1724}
+.muted{color:var(--muted);font-size:0.92rem}
+
+.invoice-summary{max-width:360px;margin-left:auto;margin-top:18px}
+.summary-row{display:flex;justify-content:space-between;padding:8px 12px;border-radius:6px}
+.summary-row.grand{font-weight:900;background:linear-gradient(90deg,var(--primary),#2563eb);color:white}
+
+.invoice-notes{margin-top:18px;padding:12px 14px;background:#fff;border-radius:8px;border:1px solid #eef2f7}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none}
+.btn-primary{background:linear-gradient(90deg,var(--primary),#115e52);color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(15,118,110,0.12);color:var(--primary)}
+
+@media print{body *{visibility:hidden}.invoice-card,.invoice-card *{visibility:visible}.invoice-card{position:fixed;left:0;top:0;width:100%;box-shadow:none}.invoice-actions{display:none}}
+
+@media (max-width:768px){.invoice-top{flex-direction:column;align-items:flex-start}.invoice-summary{width:100%;margin-left:0}}

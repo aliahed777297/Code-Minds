@@ -1,17 +1,11 @@
-/* ===========================================
-   🎨 Code Minds - ملف CSS الرئيسي
-   يستورد جميع ملفات التصميم المخصصة
-   =========================================== */
+@import 'tailwindcss';
 
-@import 'colors.css';
-@import 'typography.css';
-@import 'layout.css';
-@import 'global.css';
-@import 'header.css';
-@import 'home.css';
-@import 'backgrounds-shapes.css';
-@import 'about.css';
-@import 'contact.css';
-@import 'cart.css';
-@import 'order.css';
-@import 'invoice.css';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}

@@ -1,290 +1,212 @@
 @extends('layout.main')
+
+@push('styles')
+    <link rel="stylesheet" href="/css/home.css">
+@endpush
+
+@push('scripts')
+    <script defer src="/js/home.js"></script>
+@endpush
+
 @section('content')
-    <div class="home-root">
-        {{-- القسم الرئيسي --}}
-        <section class="section hero-section" id="home" style="min-height: 80vh; display: flex; align-items: center;">
-            {{-- الأشكال الهندسية --}}
-            <div class="shape-circle shape-1"></div>
-            <div class="shape-triangle shape-1"></div>
-            <div class="shape-star shape-1"></div>
-            <div class="shape-hexagon shape-1"></div>
+<div class="home-root" dir="rtl" lang="ar">
 
-            <div class="container">
-                <h1 class="display-text text-gradient text-balance" style="text-align: center; margin-bottom: var(--spacing-24);">
-                    منصة الخدمات التقنية
-                </h1>
-                <p class="body-large text-balance" style="text-align: center; color: var(--text-white); margin-bottom: var(--spacing-48); max-width: 600px; margin-left: auto; margin-right: auto;">
-                    نقدم خدمات تقنية متميزة بأعلى جودة واحترافية مع تصميم جذاب يجذب الزوار
-                </p>
-
-                {{-- إحصائيات الثقة --}}
-                <div class="trust-stats">
-                    <div class="stat-card">
-                        <div class="stat-value">500+</div>
-                        <div class="stat-label">عميل راضي</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">50+</div>
-                        <div class="stat-label">خدمة تقنية</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">98%</div>
-                        <div class="stat-label">رضا العملاء</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">24/7</div>
-                        <div class="stat-label">دعم فني</div>
+    {{-- 1) Top Section – Services Carousel (UI Only) --}}
+    <section class="home-hero" aria-label="خدمات المغسلة">
+        <div class="container">
+            <header class="hero-head">
+                <div class="hero-text">
+                    <h1 class="hero-title">مغسلة موثوقة… نظافة تليق بك</h1>
+                    <p class="hero-subtitle">
+                        خدمات غسيل وكي وتنظيف جاف بجودة عالية   
+                    </p>
+                    <div class="hero-cta">
+                        <a href="{{ route('services.index') }}" class="cta-button">
+                            اكتشف خدماتنا الآن
+                            <span class="arrow-icon" aria-hidden="true">→</span>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </header>
 
-        {{-- الخدمات --}}
-        <section class="section services-section" id="services">
-            {{-- الأشكال الهندسية --}}
-            <div class="shape-circle shape-2"></div>
-            <div class="shape-square shape-1"></div>
-            <div class="shape-triangle shape-2"></div>
-            <div class="shape-star shape-2"></div>
+            <div class="glb-carousel" data-glb-carousel aria-roledescription="carousel" aria-label="سلايدر الخدمات">
+                <div class="glb-viewport" data-glb-viewport>
+                    <div class="glb-track" data-glb-track>
 
-            <div class="container">
-                <h2 class="heading-1 text-balance" style="text-align: center; margin-bottom: var(--spacing-48); position: relative;">
-                    خدماتنا التقنية
-                    <div style="width: 100px; height: 4px; background: var(--gradient-primary); margin: var(--spacing-16) auto 0; border-radius: var(--radius-4);"></div>
-                </h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-image service-web-dev"></div>
-                        <h3>تطوير المواقع</h3>
-                        <p>نصمم ونطور مواقع إلكترونية احترافية بأحدث التقنيات</p>
-                        <div class="price">ابتداءً من 500 ريال</div>
-                        <div class="meta">
-                            <span>مدة التسليم: 7-14 يوم</span>
-                            <span>⭐ 4.8</span>
-                        </div>
-                        <div class="actions">
-                            <button class="btn-ghost">عرض التفاصيل</button>
-                            <form style="display: inline;">
-                                <input type="number" value="1" min="1" style="width: 60px;">
-                                <button class="btn" style="padding: 8px 16px;">إضافة للسلة</button>
-                            </form>
-                        </div>
-                    </div>
+                        {{-- Slide 1 --}}
+                        <article class="glb-slide" data-glb-slide aria-label="1 من 4">
+                            <div class="glb-media">
+                                <img class="glb-img" src="/images/gallery/s1.png" alt="تنظيف جاف احترافي">
+                            </div>
+                            <div class="glb-overlay" aria-hidden="true"></div>
 
-                    <div class="service-card">
-                        <div class="service-image service-mobile-app"></div>
-                        <h3>تطبيقات الهاتف</h3>
-                        <p>نطور تطبيقات الهواتف الذكية للأندرويد والآيفون</p>
-                        <div class="price">ابتداءً من 2000 ريال</div>
-                        <div class="meta">
-                            <span>مدة التسليم: 21-30 يوم</span>
-                            <span>⭐ 4.9</span>
-                        </div>
-                        <div class="actions">
-                            <button class="btn-ghost">عرض التفاصيل</button>
-                            <form style="display: inline;">
-                                <input type="number" value="1" min="1" style="width: 60px;">
-                                <button class="btn" style="padding: 8px 16px;">إضافة للسلة</button>
-                            </form>
-                        </div>
-                    </div>
+                            {{-- Hover text (CENTERED) --}}
+                            <div class="glb-hover" aria-hidden="true">
+                                <div class="glb-hover-inner">
+                                    <h3 class="glb-hover-title">تنظيف جاف احترافي</h3>
+                                    <p class="glb-hover-text">
+                                        عناية بالبدلات والفساتين والأقمشة الحساسة بنتائج فاخرة ورائحة منعشة.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
 
-                    <div class="service-card">
-                        <div class="service-image service-consultation"></div>
-                        <h3>استشارات تقنية</h3>
-                        <p>نقدم استشارات تقنية متخصصة لحل المشاكل التقنية</p>
-                        <div class="price">ابتداءً من 200 ريال/ساعة</div>
-                        <div class="meta">
-                            <span>مدة التسليم: حسب الطلب</span>
-                            <span>⭐ 5.0</span>
-                        </div>
-                        <div class="actions">
-                            <button class="btn-ghost">عرض التفاصيل</button>
-                            <form style="display: inline;">
-                                <input type="number" value="1" min="1" style="width: 60px;">
-                                <button class="btn" style="padding: 8px 16px;">إضافة للسلة</button>
-                            </form>
-                        </div>
-                    </div>
+                        {{-- Slide 2 --}}
+                        <article class="glb-slide" data-glb-slide aria-label="2 من 4">
+                            <div class="glb-media">
+                                <img class="glb-img" src="/images/gallery/s2.png" alt="غسيل وكوي يومي">
+                            </div>
+                            <div class="glb-overlay" aria-hidden="true"></div>
 
-                    <div class="service-card">
-                        <div class="service-image service-seo"></div>
-                        <h3>تحسين محركات البحث</h3>
-                        <p>نحسن ظهور موقعك في نتائج البحث وزيادة الزوار</p>
-                        <div class="price">ابتداءً من 300 ريال</div>
-                        <div class="meta">
-                            <span>مدة التسليم: 15-30 يوم</span>
-                            <span>⭐ 4.7</span>
-                        </div>
-                        <div class="actions">
-                            <button class="btn-ghost">عرض التفاصيل</button>
-                            <form style="display: inline;">
-                                <input type="number" value="1" min="1" style="width: 60px;">
-                                <button class="btn" style="padding: 8px 16px;">إضافة للسلة</button>
-                            </form>
-                        </div>
-                    </div>
+                            <div class="glb-hover" aria-hidden="true">
+                                <div class="glb-hover-inner">
+                                    <h3 class="glb-hover-title">غسيل وكوي يومي</h3>
+                                    <p class="glb-hover-text">
+                                        تنظيف مرتب، كوي احترافي، وتغليف أنيق — مناسب للعائلات والطلاب.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
 
-                    <div class="service-card">
-                        <div class="service-image service-design"></div>
-                        <h3>تصميم الجرافيك</h3>
-                        <p>نصمم هويات بصرية ومواد تسويقية احترافية</p>
-                        <div class="price">ابتداءً من 150 ريال</div>
-                        <div class="meta">
-                            <span>مدة التسليم: 3-7 أيام</span>
-                            <span>⭐ 4.6</span>
-                        </div>
-                        <div class="actions">
-                            <button class="btn-ghost">عرض التفاصيل</button>
-                            <form style="display: inline;">
-                                <input type="number" value="1" min="1" style="width: 60px;">
-                                <button class="btn" style="padding: 8px 16px;">إضافة للسلة</button>
-                            </form>
-                        </div>
-                    </div>
+                        {{-- Slide 3 --}}
+                        <article class="glb-slide" data-glb-slide aria-label="3 من 4">
+                            <div class="glb-media">
+                                <img class="glb-img" src="/images/gallery/s3.png" alt="تعقيم وتنظيف آمن">
+                            </div>
+                            <div class="glb-overlay" aria-hidden="true"></div>
 
-                    <div class="service-card">
-                        <div class="service-image service-maintenance"></div>
-                        <h3>صيانة المواقع</h3>
-                        <p>نقدم خدمات صيانة وتحديث المواقع باستمرار</p>
-                        <div class="price">ابتداءً من 100 ريال/شهر</div>
-                        <div class="meta">
-                            <span>مدة التسليم: مستمرة</span>
-                            <span>⭐ 4.9</span>
-                        </div>
-                        <div class="actions">
-                            <button class="btn-ghost">عرض التفاصيل</button>
-                            <form style="display: inline;">
-                                <input type="number" value="1" min="1" style="width: 60px;">
-                                <button class="btn" style="padding: 8px 16px;">إضافة للسلة</button>
-                            </form>
-                        </div>
+                            <div class="glb-hover" aria-hidden="true">
+                                <div class="glb-hover-inner">
+                                    <h3 class="glb-hover-title">تعقيم وتنظيف آمن</h3>
+                                    <p class="glb-hover-text">
+                                        تنظيف يراعي القماش ويقلّل الحساسية… مع اهتمام بالتفاصيل.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
+                        {{-- Slide 4 --}}
+                        <article class="glb-slide" data-glb-slide aria-label="4 من 4">
+                            <div class="glb-media">
+                                <img class="glb-img" src="/images/gallery/s4.png" alt="استلام وتسليم سريع">
+                            </div>
+                            <div class="glb-overlay" aria-hidden="true"></div>
+
+                            <div class="glb-hover" aria-hidden="true">
+                                <div class="glb-hover-inner">
+                                    <h3 class="glb-hover-title">استلام وتسليم سريع</h3>
+                                    <p class="glb-hover-text">
+                                        نستلم ونوصل حسب الموعد — خدمة مريحة لتوفير وقتك.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+
                     </div>
                 </div>
+
+                {{-- Navigation (خارجي — ليس أزرار داخل السلايد) --}}
+                <button class="glb-nav prev" type="button" data-glb-prev aria-label="السابق">‹</button>
+                <button class="glb-nav next" type="button" data-glb-next aria-label="التالي">›</button>
+
+                <div class="glb-dots" data-glb-dots aria-label="مؤشرات السلايدر"></div>
             </div>
-        </section>
 
-        {{-- من نحن --}}
-        <section class="section about-section" id="about">
-            {{-- الأشكال الهندسية --}}
-            <div class="shape-hexagon shape-2"></div>
-            <div class="shape-circle shape-3"></div>
-            <div class="shape-square shape-2"></div>
+        </div>
+    </section>
 
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div>
-                        <h2 style="margin-bottom: 2rem; position: relative;">
-                            من نحن
-                            <div style="width: 80px; height: 4px; background: var(--gradient-primary); margin-top: 1rem; border-radius: 2px;"></div>
-                        </h2>
-                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--text-secondary);">
-                            نحن فريق من المطورين والمصممين المتخصصين في تقديم حلول تقنية متميزة للأفراد والشركات.
-                            نؤمن بأن التكنولوجيا يجب أن تكون سهلة الاستخدام وفعالة في تحقيق أهداف عملائنا.
-                        </p>
-                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: var(--text-secondary);">
-                            خبرتنا تمتد لأكثر من 5 سنوات في مجال التطوير والتصميم، وقد ساعدنا مئات العملاء في تحويل أفكارهم إلى واقع ملموس.
-                        </p>
-                        <div style="display: flex; gap: 1rem;">
-                            <button class="btn">تعرف علينا أكثر</button>
-                            <button class="btn btn-outline">مشاهدة أعمالنا</button>
+    {{-- 2) Statistics & Customer Satisfaction --}}
+    <section class="home-stats" aria-label="إحصائيات وثقة العملاء">
+        <div class="container">
+            <header class="section-head">
+                <h2 class="section-title">ثقة العملاء بالأرقام</h2>
+                <p class="section-subtitle">مؤشرات ثابتة (Placeholder) لرفع الثقة وتشجيع التفاعل.</p>
+            </header>
+
+            <div class="stats-grid">
+                <article class="stat-card reveal-on-scroll">
+                    <div class="stat-top">
+                        <div class="stat-icon" aria-hidden="true">⭐</div>
+                        <div class="stat-value">
+                            <span class="countup" data-count="98">0</span><span class="unit">%</span>
                         </div>
                     </div>
-                    <div style="position: relative;">
-                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: var(--radius-xl); position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
-                                <h3 style="font-size: 2rem; margin-bottom: 1rem;">خبرة +5 سنوات</h3>
-                                <p>في مجال التطوير والتصميم</p>
-                            </div>
-                            {{-- جسيمات متحركة --}}
-                            <div class="particles">
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                            </div>
+                    <div class="stat-label">رضا العملاء</div>
+                    <div class="progress" role="progressbar" aria-label="نسبة رضا العملاء" aria-valuemin="0" aria-valuemax="100" aria-valuenow="98">
+                        <span class="progress-fill" style="--fill:98%"></span>
+                    </div>
+                    <p class="stat-hint">تقييمات مرتفعة بفضل الجودة والالتزام بالمواعيد.</p>
+                </article>
+
+                <article class="stat-card reveal-on-scroll">
+                    <div class="stat-top">
+                        <div class="stat-icon" aria-hidden="true">🧺</div>
+                        <div class="stat-value">
+                            <span class="countup" data-count="12450">0</span><span class="unit">+</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                    <div class="stat-label">طلبات مكتملة</div>
+                    <div class="progress" role="progressbar" aria-label="مؤشر الطلبات المكتملة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="86">
+                        <span class="progress-fill" style="--fill:86%"></span>
+                    </div>
+                    <p class="stat-hint">حجم تنفيذ كبير مع معايير جودة ثابتة.</p>
+                </article>
 
-        {{-- نموذج اتصال --}}
-        <section class="section contact-section" id="contact">
-            {{-- الأشكال الهندسية --}}
-            <div class="shape-triangle shape-1"></div>
-            <div class="shape-star shape-1"></div>
-            <div class="shape-circle shape-2"></div>
-
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; position: relative;">
-                    تواصل معنا
-                    <div style="width: 100px; height: 4px; background: var(--gradient-primary); margin: 1rem auto 0; border-radius: 2px;"></div>
-                </h2>
-                <div style="max-width: 500px; margin: 0 auto;">
-                    <form class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="form-label">الاسم الكامل</label>
-                                <input type="text" class="form-control" placeholder="أدخل اسمك الكامل">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">البريد الإلكتروني</label>
-                                <input type="email" class="form-control" placeholder="example@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">رقم الهاتف</label>
-                                <input type="tel" class="form-control" placeholder="05xxxxxxxx">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">الرسالة</label>
-                                <textarea class="form-control" rows="4" placeholder="اكتب رسالتك هنا..."></textarea>
-                            </div>
-                            <button class="btn" style="width: 100%;">إرسال الرسالة</button>
+                <article class="stat-card reveal-on-scroll">
+                    <div class="stat-top">
+                        <div class="stat-icon" aria-hidden="true">😊</div>
+                        <div class="stat-value">
+                            <span class="countup" data-count="8900">0</span><span class="unit">+</span>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="stat-label">عملاء سعداء</div>
+                    <div class="progress" role="progressbar" aria-label="مؤشر العملاء السعداء" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92">
+                        <span class="progress-fill" style="--fill:92%"></span>
+                    </div>
+                    <p class="stat-hint">نكرر التجربة لأن الخدمة تستحق.</p>
+                </article>
             </div>
-        </section>
+        </div>
+    </section>
+
+    {{-- 3) Laundry Work Gallery --}}
+    <section class="home-gallery" aria-label="معرض أعمال المغسلة">
+  <div class="container">
+    <header class="section-head">
+      <h2 class="section-title">معرض الأعمال</h2>
+      <p class="section-subtitle">نماذج من نتائج الغسيل والكوي والتغليف — صور حقيقية.</p>
+    </header>
+
+    <div class="gallery-grid" data-gallery>
+      @php
+        $gallery = [
+          ['src' => '/images/gallery/1.png', 'title' => 'تنظيف جاف', 'desc' => 'نتيجة نظيفة بدون تأثير على القماش'],
+          ['src' => '/images/gallery/2.png', 'title' => 'كوي احترافي', 'desc' => 'تسوية مرتبة وتجعيدات أقل'],
+          ['src' => '/images/gallery/3.png', 'title' => 'غسيل عائلي', 'desc' => 'ترتيب وتغليف جاهز للاستلام'],
+          ['src' => '/images/gallery/4.png', 'title' => 'تعقيم', 'desc' => 'تنظيف آمن ورائحة منعشة'],
+          ['src' => '/images/gallery/5.png', 'title' => 'قبل/بعد', 'desc' => 'فرق واضح في النظافة واللمعة'],
+          ['src' => '/images/gallery/6.png', 'title' => 'أقمشة حساسة', 'desc' => 'عناية خاصة للأقمشة الفخمة'],
+          ['src' => '/images/gallery/7.png', 'title' => 'تغليف أنيق', 'desc' => 'تغليف مرتب يحافظ على الكوي'],
+          ['src' => '/images/gallery/8.png', 'title' => 'جاهز للتسليم', 'desc' => 'تجهيز سريع مع جودة ثابتة'],
+        ];
+      @endphp
+
+      @foreach($gallery as $item)
+        <figure class="gallery-card reveal-on-scroll" tabindex="0">
+          <div class="gallery-media">
+            <img class="gallery-img" src="{{ $item['src'] }}" alt="{{ $item['title'] }}">
+            <div class="gallery-overlay" aria-hidden="true">
+              <div class="gallery-overlay-text">
+                <div class="g-title">{{ $item['title'] }}</div>
+                <div class="g-desc">{{ $item['desc'] }}</div>
+              </div>
+            </div>
+          </div>
+        </figure>
+      @endforeach
     </div>
+  </div>
+   </section>
 
-    <script>
-        // تأثير الشريط المنزلق عند التمرير
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // تحريك البطاقات عند الظهور
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // إضافة تأثير التحريك للبطاقات
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
+</div>
 @endsection

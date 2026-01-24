@@ -1,285 +1,839 @@
-/* ===========================================
-   🧭 تصميم شريط التنقل - Navigation Header
-   تصميم احترافي وعصري
-   =========================================== */
+/* =========================
+   CSS Header with Authentication
+   تم التحديث لإصلاح البردر الزائد
+========================= */
 
-.navbar {
-  background: var(--bg-primary);
-  padding: var(--spacing-md) 0;
-  border-bottom: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
+/* =========================
+   Variables
+========================= */
+:root {
+  /* الألوان الرئيسية */
+  --primary-teal: #0d9488;
+  --secondary-teal: #0f766e;
+  --accent-teal: #2dd4bf;
+  --light-teal: #5eead4;
+  --dark-teal: #134e4a;
+  --white: #ffffff;
+  
+  /* ألوان المصادقة */
+  --auth-danger: #ff6b6b;
+  --auth-success: #4ade80;
+  
+  /* الظلال */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* الزوايا المدورة */
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-lg: 12px;
+  
+  /* المسافات */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* الأبعاد */
+  --container-max: 1200px;
+  --nav-height: 80px;
+  
+  /* الخطوط */
+  --font-primary: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-weight-extra-bold: 700;
+  
+  /* الحركات */
+  --transition: all 0.2s ease;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================
+   Base - إصلاح البردر
+========================= */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* إصلاح Focus - إزالة البردر الزائد */
+a:focus,
+button:focus {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 1px;
+}
+
+/* =========================
+   Cart Badge
+========================= */
+.cart-badge {
+  background: var(--accent-teal);
+  color: var(--dark-teal);
+  border-radius: 999px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-bold);
+  margin-right: 8px;
+  animation: bounce 0.5s ease;
+  border: none; /* إزالة البردر الزائد */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* =========================
+   Header - إصلاح البردر
+========================= */
+.site-header {
+  background: linear-gradient(135deg, var(--primary-teal) 0%, var(--secondary-teal) 100%);
+  box-shadow: var(--shadow);
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(10px);
-  transition: var(--transition-normal);
+  width: 100%;
+  backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(13, 148, 136, 0.95);
+  border-bottom: none; /* إزالة البردر السفلي الزائد */
+  transition: var(--transition-smooth);
 }
 
-.navbar.scrolled {
-  box-shadow: var(--shadow-md);
-  background: rgba(255, 255, 255, 0.95);
+.site-header.scrolled {
+  --nav-height: 76px;
+  background-color: rgba(13, 148, 136, 0.98);
+  box-shadow: var(--shadow-elevated);
+  backdrop-filter: blur(30px) saturate(200%);
 }
 
-/* ===========================================
-   🏷️ العلامة التجارية - Brand Logo
-   =========================================== */
-
-.brand {
-  float: right;
-  font-weight: 800;
-  margin-left: var(--spacing-sm);
-  color: var(--primary-color);
-  transition: var(--transition-normal);
-  font-size: var(--font-size-xl);
-  text-decoration: none;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  height: var(--nav-height);
   position: relative;
+  transition: var(--transition-smooth);
 }
 
-.brand::before {
+/* =========================
+   Brand / Logo - إصلاح المسافات
+========================= */
+.mobile-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  z-index: 1002;
+  flex: 1;
+}
+
+.logo-container { 
+  display: flex; 
+  align-items: center; 
+}
+
+.logo { 
+  display: flex; 
+  align-items: center; 
+}
+
+.logo a {
+  color: var(--white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: var(--transition-smooth);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+  border: none; /* إزالة أي بردر */
+}
+
+.logo a::before {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: var(--transition-normal);
-}
-
-.brand:hover {
-  transform: translateY(-2px);
-  color: var(--primary-hover);
-}
-
-.brand:hover::before {
+  top: 0;
+  right: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ===========================================
-   📋 قائمة التنقل - Navigation Links
-   =========================================== */
+.logo a:hover::before { 
+  transform: translateX(0); 
+}
+
+.logo a i {
+  color: var(--white);
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  padding: var(--spacing-md);
+  border-radius: 50%;
+  transition: var(--transition-smooth);
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none; /* تأكيد إزالة البردر */
+}
+
+.logo a:hover i {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(-20deg) scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.4;
+  z-index: 1;
+}
+
+.logo-main {
+  font-size: 1.9rem;
+  font-weight: var(--font-weight-extra-bold);
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--light-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: var(--transition);
+}
+
+.logo-tagline {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--spacing-xs);
+  opacity: 0.95;
+  transition: var(--transition);
+}
+
+.logo a:hover .logo-tagline {
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+/* =========================
+   Desktop Nav - إصلاح المسافات
+========================= */
+.nav-right { 
+  display: flex; 
+  align-items: center;
+  gap: var(--spacing-md); /* تقليل المسافة */
+}
 
 .nav-links {
   list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2px; /* تقليل المسافة بين العناصر */
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: var(--spacing-sm);
-  float: left;
-  align-items: center;
+}
+
+.nav-links li { 
+  position: relative; 
 }
 
 .nav-links a {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-lg);
+  font-size: 1.05rem;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--border-radius-lg);
+  transition: var(--transition-smooth);
   position: relative;
-  display: inline-block;
-  transition: var(--transition-normal);
-  font-weight: 500;
-  font-size: var(--font-size-base);
+  overflow: hidden;
+  letter-spacing: 0.2px;
+  border: none; /* إزالة البردر */
 }
 
-.nav-links a::after {
+.nav-links a::before {
   content: '';
   position: absolute;
-  left: 0;
+  top: 0;
   right: 0;
-  bottom: -6px;
-  height: 3px;
-  background: transparent;
-  border-radius: var(--radius-sm);
-  transform: scaleX(0.2);
-  transform-origin: right center;
-  transition: var(--transition-normal);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.15) 0%, rgba(45, 212, 191, 0.05) 100%);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--border-radius-lg);
+}
+
+.nav-links a:hover::before { 
+  transform: translateX(0); 
 }
 
 .nav-links a:hover {
-  color: var(--primary-color);
-  transform: translateY(-4px);
-  background: rgba(13, 148, 136, 0.05);
+  color: var(--white);
+  transform: translateY(-2px); /* تقليل الحركة */
 }
 
-.nav-links a:hover::after {
-  background: rgba(13, 148, 136, 0.14);
-  transform: scaleX(1);
-  transform-origin: left center;
+.nav-links a i {
+  font-size: 1.3rem;
+  color: var(--accent-teal);
+  transition: var(--transition-smooth);
+  min-width: 24px;
+  text-align: center;
 }
 
-.nav-links a.active {
-  color: var(--primary-color);
-  font-weight: 700;
-  background: rgba(13, 148, 136, 0.1);
+.nav-links a:hover i {
+  color: var(--white);
+  transform: scale(1.1) rotate(-5deg);
 }
 
-.nav-links a.active::after {
-  background: var(--gradient-primary);
-  transform: scaleX(1);
-  transform-origin: left center;
-  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.12);
+.nav-links li.active a {
+  color: var(--white);
+  background: rgba(45, 212, 191, 0.25);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 4px 16px rgba(45, 212, 191, 0.2);
+  border: none; /* إزالة البردر */
 }
 
-.nav-links a.pulse {
-  animation: navPulse 0.6s ease;
+.nav-links li.active a i { 
+  color: var(--white); 
 }
 
-@keyframes navPulse {
-  0% { transform: translateY(0) scale(1); }
-  30% { transform: translateY(-6px) scale(1.02); }
-  100% { transform: translateY(0) scale(1); }
+.nav-links li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 24px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-teal), transparent);
+  border-radius: 4px;
+  animation: pulse 2s infinite;
 }
 
-/* ===========================================
-   📱 زر القائمة للموبايل - Mobile Menu Toggle
-   =========================================== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
 
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: 0;
-  font-size: var(--font-size-xl);
+/* =========================
+   Authentication Section - إصلاح المسافات
+========================= */
+
+/* زر تسجيل الدخول للزوار */
+.login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.9) 0%, rgba(13, 148, 136, 0.9) 100%);
+  color: white;
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-lg); /* تقليل padding */
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.95rem;
+  transition: all var(--transition-smooth);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* بردر خفيف */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(45, 212, 191, 0.25);
+  position: relative;
+  overflow: hidden;
+  min-width: 130px; /* تقليل العرض */
+  height: 44px; /* تقليل الارتفاع */
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--border-radius-lg);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px); /* تقليل الحركة */
+  box-shadow: 0 6px 20px rgba(45, 212, 191, 0.35);
+}
+
+.login-btn:hover::before {
+  transform: translateX(0);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.login-btn i {
+  font-size: 1.1rem;
+  transition: transform var(--transition);
+}
+
+.login-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* معلومات المستخدم المسجل */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md); /* تقليل المسافة */
+  background: rgba(255, 255, 255, 0.12);
+  padding: var(--spacing-sm) var(--spacing-lg); /* تقليل padding */
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-smooth);
+  position: relative;
+  min-width: 180px; /* تقليل العرض */
+  justify-content: space-between;
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px); /* تقليل الحركة */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.user-info span {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9rem; /* تقليل حجم الخط */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px; /* تقليل العرض الأقصى */
+  transition: color var(--transition);
+}
+
+.user-info:hover span {
+  color: white;
+}
+
+/* زر تسجيل الخروج */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs); /* تقليل المسافة */
+  background: linear-gradient(135deg, var(--auth-danger) 0%, #ff5252 100%);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-md); /* تقليل padding */
+  border-radius: var(--border-radius);
+  font-size: 0.8rem; /* تقليل حجم الخط */
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-md);
-  color: var(--text-secondary);
-  transition: var(--transition-fast);
+  transition: all var(--transition);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 3px 10px rgba(255, 107, 107, 0.25);
+  position: relative;
+  overflow: hidden;
+  min-height: 32px; /* تقليل الارتفاع */
+  min-width: 90px; /* تقليل العرض */
 }
 
-.nav-toggle:focus {
-  outline: 2px solid rgba(13, 148, 136, 0.2);
-  outline-offset: 2px;
+.logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-toggle:hover {
-  background: rgba(13, 148, 136, 0.1);
-  color: var(--primary-color);
+.logout-btn:hover {
+  transform: translateY(-2px); /* تقليل الحركة */
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.35);
 }
 
-.nav-toggle.open {
+.logout-btn:hover::before {
+  transform: translateX(0);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn i {
+  font-size: 0.85rem; /* تقليل حجم الأيقونة */
+  transition: transform var(--transition);
+}
+
+.logout-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* =========================
+   Mobile Button + Overlay
+========================= */
+.mobile-menu-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--white);
+  padding: var(--spacing-md);
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  transition: var(--transition-smooth);
+  z-index: 1003;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: var(--accent-teal);
   transform: rotate(90deg);
-  background: rgba(13, 148, 136, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* ===========================================
-   🛒 شارة سلة التسوق - Cart Badge
-   =========================================== */
-
-.cart-badge {
-  display: inline-block;
-  background: var(--gradient-primary);
-  color: var(--text-white);
-  padding: 2px var(--spacing-sm);
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  margin-inline-start: var(--spacing-sm);
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-  animation: badgePulse 2s infinite;
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  backdrop-filter: blur(4px);
 }
 
-@keyframes badgePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+.mobile-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* ===========================================
-   📱 التصميم المتجاوب - Responsive Design
-   =========================================== */
-
-@media (max-width: 920px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    right: var(--spacing-sm);
-    top: 64px;
-    background: var(--bg-primary);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
-    flex-direction: column;
+/* =========================
+   Responsive - تحديث المسافات
+========================= */
+@media screen and (min-width: 1440px) {
+  :root { 
+    --nav-height: 96px; 
+  }
+  
+  .navbar { 
+    padding: 0 var(--spacing-xxl); 
+  }
+  
+  .nav-links { 
+    gap: 4px; /* تقليل المسافة */
+  }
+  
+  .nav-links a { 
+    font-size: 1.1rem; 
+    padding: var(--spacing-lg) var(--spacing-xl); 
+  }
+  
+  .logo a i { 
+    font-size: 2.8rem; 
+  }
+  
+  .logo-main { 
+    font-size: 2.2rem; 
+  }
+  
+  .logo-tagline { 
+    font-size: 1rem; 
+  }
+  
+  .login-btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1rem;
+    min-width: 140px;
+  }
+  
+  .user-info {
+    padding: var(--spacing-md) var(--spacing-xl);
     min-width: 200px;
-    gap: var(--spacing-xs);
-    border: 1px solid var(--border-light);
-    backdrop-filter: blur(10px);
+  }
+  
+  .user-info span {
+    max-width: 120px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root { 
+    --nav-height: 82px; 
+  }
+  
+  .navbar { 
+    padding: 0 var(--spacing-lg); 
+  }
+  
+  .nav-links { 
+    gap: 2px; /* تقليل المسافة */
+  }
+  
+  .nav-links a { 
+    padding: var(--spacing-sm) var(--spacing-md); 
+    font-size: 1rem; 
+  }
+  
+  .logo a i { 
+    font-size: 2.2rem; 
+    padding: var(--spacing-sm); 
+  }
+  
+  .logo-main { 
+    font-size: 1.7rem; 
+  }
+  
+  .logo-tagline { 
+    font-size: 0.85rem; 
+  }
+  
+  .login-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    min-width: 110px;
+    height: 40px;
+  }
+  
+  .user-info {
+    padding: var(--spacing-xs) var(--spacing-md);
+    min-width: 160px;
+    gap: var(--spacing-sm);
+  }
+  
+  .user-info span {
+    font-size: 0.85rem;
+    max-width: 80px;
+  }
+  
+  .logout-btn {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    min-width: 80px;
+    min-height: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root { 
+    --nav-height: 72px; 
   }
 
-  .nav-links.open {
+  .navbar { 
+    padding: 0 var(--spacing-md); 
+    height: var(--nav-height); 
+  }
+  
+  .mobile-header { 
+    gap: var(--spacing-md); 
+    width: 100%; 
+    justify-content: space-between; 
+  }
+
+  .logo-container { 
+    flex: 1; 
+    min-width: 0; 
+  }
+  
+  .logo a { 
+    padding: var(--spacing-xs) var(--spacing-sm); 
+  }
+  
+  .logo a i { 
+    font-size: 1.8rem; 
+    padding: var(--spacing-sm); 
+    flex-shrink: 0; 
+  }
+  
+  .logo-main { 
+    font-size: 1.4rem; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  
+  .logo-tagline { 
+    font-size: 0.75rem; 
+  }
+
+  .mobile-menu-btn { 
+    display: flex; 
+    flex-shrink: 0; 
+  }
+
+  /* Side menu */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 88%;
+    max-width: 360px;
+    height: 100vh;
+    background: linear-gradient(155deg, var(--primary-teal) 0%, var(--secondary-teal) 100%);
+    flex-direction: column;
+    gap: 2px; /* تقليل المسافة */
+    padding: calc(var(--nav-height) + var(--spacing-xl)) var(--spacing-lg) var(--spacing-xl);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 9999;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-links.active { 
+    right: 0; 
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links.active li { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+
+  .nav-links li:not(:last-child) { 
+    margin-bottom: 4px; /* تقليل المسافة */
+  }
+  
+  .nav-links li.active::after { 
+    display: none; 
+  }
+
+  .nav-links li.active {
+    background: rgba(45, 212, 191, 0.25);
+    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.2);
+  }
+
+  /* Mobile buttons look */
+  .nav-links a {
+    width: 100%;
     display: flex;
-    animation: menuOpen 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px; /* تقليل المسافة */
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 12px 16px; /* تقليل padding */
+    border-radius: 12px; /* تقليل الزوايا */
+    margin: 4px 0; /* تقليل المسافة */
+    background: rgba(255, 255, 255, 0.06);
+    border: none; /* إزالة البردر */
   }
 
-  @keyframes menuOpen {
+  .nav-links a i {
+    font-size: 1.3rem;
+    min-width: 26px;
+    text-align: center;
+    color: var(--accent-teal);
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  .nav-links a span { 
+    flex: 0; 
+  }
+
+  .nav-links a:hover,
+  .nav-links li.active a {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+  }
+
+  .nav-links a:hover i,
+  .nav-links li.active a i {
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  .nav-links a::after { 
+    display: none; 
+  }
+
+  .nav-links a .cart-badge {
+    margin-inline-start: auto;
+    background: #fff;
+    color: var(--primary-teal);
+    font-weight: 800;
+    border: none;
+  }
+
+  /* إخفاء قسم المصادقة في القائمة الجانبية */
+  .nav-right {
+    position: relative;
+  }
+  
+  .nav-links ~ .login-btn,
+  .nav-links ~ .user-info {
+    position: fixed;
+    bottom: var(--spacing-lg); /* تقليل المسافة من الأسفل */
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 10000;
+    margin: 0;
+    animation: slideUpAuth 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes slideUpAuth {
     from {
       opacity: 0;
-      transform: scale(0.96) translateY(-6px);
+      transform: translateX(50%) translateY(20px);
     }
     to {
       opacity: 1;
-      transform: none;
+      transform: translateX(50%) translateY(0);
     }
   }
-
-  .brand {
-    float: none;
-    display: inline-block;
-  }
-
-  .nav-toggle {
-    display: inline-block;
-  }
-
-  .navbar {
-    padding: var(--spacing-sm) 0;
+  
+  /* إخفاء قسم المصادقة عند فتح القائمة الموبايل */
+  .nav-links.active ~ .login-btn,
+  .nav-links.active ~ .user-info {
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .nav-links {
-    right: var(--spacing-xs);
-    min-width: 180px;
-    padding: var(--spacing-sm);
-  }
-
-  .brand {
-    font-size: var(--font-size-lg);
-  }
-}
-
-/* ===========================================
-   🌟 تأثيرات خاصة - Special Effects
-   =========================================== */
-
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(13, 148, 136, 0.02) 50%, transparent 100%);
-  opacity: 0;
-  transition: var(--transition-normal);
-  pointer-events: none;
-}
-
-.navbar:hover::before {
-  opacity: 1;
-}
-
-/* تأثير الشريط المنزلق للروابط النشطة */
-.nav-links a.active {
-  position: relative;
-}
-
-.nav-links a.active::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
-  border-radius: var(--radius-lg);
-  z-index: -1;
-}
+/* باقي CSS كما هو مع تعديلات طفيفة... */

@@ -7,16 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('cart_items', function (Blueprint $table) {
-            $table->id();
-            $table->string('session_id', 128)->index();
-            $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
-            $table->unsignedSmallInteger('quantity')->default(1);
-            $table->tinyInteger('rating')->nullable();
-            $table->text('comment')->nullable();
-            $table->decimal('price_at_add', 10, 2);
-            $table->timestamps();
-        });
+        // في ملف migration الخاص بـ cart_items
+Schema::create('cart_items', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+    $table->string('session_id')->nullable(); // تغيير هنا
+    $table->foreignId('service_id')->constrained()->onDelete('cascade');
+    $table->integer('quantity')->default(1);
+    $table->decimal('price_at_add', 8, 2);
+    $table->timestamps();
+    
+    $table->index(['user_id', 'session_id', 'service_id']);
+});
     }
 
     public function down()

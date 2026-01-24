@@ -1,3 +1,509 @@
-.order-items{list-style:none;padding:0}
-.order-items li{background:#fff;padding:8px;border:1px solid #eee;margin-bottom:6px}
-.total{font-weight:800;margin-top:12px}
+/* تنسيقات صفحة الطلبات */
+:root {
+    --primary-color: #3b82f6;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --gray-color: #6b7280;
+    --light-gray: #f9fafb;
+    --border-color: #e5e7eb;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.page-description {
+    color: var(--gray-color);
+    font-size: 1rem;
+}
+
+/* كرت الطلب */
+.order-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+    border: 1px solid rgba(17,24,39,0.04);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1.1rem;
+    transition: transform 0.28s cubic-bezier(.2,.8,.2,1), box-shadow 0.28s;
+}
+
+.order-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(2,6,23,0.08);
+    border-color: rgba(59,130,246,0.12);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(15,23,42,0.04);
+}
+
+.order-meta .order-number {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.order-date {
+    color: var(--gray-color);
+    font-size: 0.875rem;
+}
+
+/* حالة الطلب */
+.order-status-badge {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.status-badge, .payment-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+
+.status-badge.pending { background-color: var(--gray-color); }
+.status-badge.processing { background-color: var(--warning-color); }
+.status-badge.completed { background-color: var(--success-color); }
+.status-badge.cancelled { background-color: var(--danger-color); }
+
+.payment-badge.pending { background-color: var(--gray-color); }
+.payment-badge.paid { background-color: var(--success-color); }
+.payment-badge.failed { background-color: var(--danger-color); }
+
+/* جسم الطلب */
+.order-body {
+    margin-bottom: 0.9rem;
+}
+
+.order-items-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.items-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-color);
+    font-size: 0.875rem;
+}
+
+.items-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.item-tag {
+    background: linear-gradient(90deg, rgba(15,118,110,0.04), rgba(59,130,246,0.02));
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    color: #374151;
+}
+
+.more-items {
+    color: var(--primary-color);
+    font-size: 0.75rem;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(15,23,42,0.04);
+}
+
+.total-label {
+    color: var(--gray-color);
+    font-weight: 500;
+}
+
+.total-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* تذييل الطلب */
+.order-footer {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.order-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-view, .btn-invoice, .btn-pay {
+    padding: 0.55rem 0.95rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.18s ease;
+}
+
+.btn-view {
+    background: var(--light-gray);
+    color: #4b5563;
+    border: 1px solid var(--border-color);
+}
+
+.btn-view:hover {
+    background: #e5e7eb;
+}
+
+.btn-invoice {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid rgba(59,130,246,0.12);
+}
+
+.btn-invoice:hover {
+    background: rgba(59,130,246,0.08);
+    color: rgba(17,24,39,0.95);
+}
+
+.btn-pay {
+    background: linear-gradient(90deg,var(--primary-color),#2ddf1d);
+    color: white;
+    border: none;
+}
+
+.btn-pay:hover {
+    transform: translateY(-3px);
+}
+
+/* صفحة تفاصيل الطلب */
+.order-detail-container {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+    margin-bottom: 1.5rem;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+.order-title-section {
+    margin-bottom: 2rem;
+}
+
+.order-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.order-number {
+    color: var(--gray-color);
+    font-size: 1rem;
+}
+
+.order-status-section {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.status-display {
+    display: flex;
+    gap: 2rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.status-label {
+    color: var(--gray-color);
+    font-weight: 500;
+}
+
+.status-value {
+    padding: 0.25rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.status-value.pending { background-color: #f3f4f6; color: var(--gray-color); }
+.status-value.processing { background-color: #fef3c7; color: #92400e; }
+.status-value.completed { background-color: #d1fae5; color: #065f46; }
+.status-value.cancelled { background-color: #fee2e2; color: #991b1b; }
+
+.status-value.paid { background-color: #d1fae5; color: #065f46; }
+.status-value.failed { background-color: #fee2e2; color: #991b1b; }
+
+/* شبكة التفاصيل */
+.order-detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.items-list {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.item-description {
+    color: var(--gray-color);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.item-meta {
+    display: flex;
+    gap: 1rem;
+}
+
+.meta-tag {
+    background: var(--light-gray);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    color: #4b5563;
+}
+
+.item-total {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #0f1724;
+}
+
+/* بطاقة الملخص */
+.summary-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.summary-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row.total {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.grand-total {
+    color: var(--primary-color);
+}
+
+.summary-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-invoice, .btn-pay-now {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Additional button styles */
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg,var(--primary-color),#3fa564);
+    color: white;
+    border: none;
+    transition: all 0.18s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+}
+
+.btn-ghost {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--light-gray);
+    color: #4b5563;
+    border: 1px solid var(--border-color);
+    transition: all 0.18s ease;
+}
+
+.btn-ghost:hover {
+    background: #e5e7eb;
+}
+
+.btn-pay-now {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg,var(--primary-color),#37ae4d);
+    color: white;
+    border: none;
+    transition: all 0.18s ease;
+}
+
+.btn-pay-now:hover {
+    transform: translateY(-3px);
+}
+
+/* الحالة الفارغة */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.empty-description {
+    color: var(--gray-color);
+    margin-bottom: 2rem;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* التجاوب مع الأجهزة المحمولة */
+@media (max-width: 768px) {
+    .order-detail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .status-display {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .order-actions {
+        flex-direction: column;
+    }
+    
+    .btn-view, .btn-invoice, .btn-pay {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,43 @@
+/* Payment page styles */
+:root{--primary:#0F766E;--muted:#6b7280;--bg:#f7fafb;--card:#fff}
+body{font-family:'Cairo',sans-serif}
+
+.payment-page{max-width:1100px;margin:28px auto;padding:12px}
+.payment-card{background:var(--card);border-radius:12px;padding:20px;box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+.payment-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.payment-header h1{margin:0;font-size:1.4rem;color:var(--primary)}
+.order-meta{color:var(--muted)}
+
+.payment-body{display:grid;grid-template-columns:360px 1fr;gap:20px}
+.summary-panel{background:linear-gradient(180deg,#ffffff,#fbfffd);padding:18px;border-radius:12px;border:1px solid rgba(15,118,110,0.06);display:flex;flex-direction:column;gap:12px}
+.summary-head{display:flex;justify-content:space-between;align-items:center}
+.summary-head h3{margin:0;font-size:1.05rem}
+.items-count{font-size:0.9rem;color:var(--muted)}
+.summary-body{display:flex;flex-direction:column;gap:8px;padding-top:4px}
+.summary-line{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:linear-gradient(90deg,rgba(15,118,110,0.02),transparent)}
+.summary-line span{font-weight:600;color:#374151}
+.summary-line.total{background:transparent}
+.summary-line .value{font-weight:900;color:#0f1724}
+.summary-note{font-size:0.92rem;color:var(--muted);margin-top:6px}
+
+.form-panel{padding:6px}
+.form-group{margin-bottom:12px}
+.payment-methods{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.pm{display:inline-flex;align-items:center;gap:10px;padding:8px;border-radius:8px;border:1px solid #eef6f4}
+.pm input{margin:0}
+.pm.disabled{opacity:0.6}
+
+.card-fields{margin-top:6px;background:#fff;padding:12px;border-radius:8px;border:1px solid #f1f5f9}
+.form-row{margin-bottom:10px}
+.form-row.small{margin-bottom:8px}
+.form-row.inline{display:flex;gap:10px}
+.form-row.inline > div{flex:1}
+label{display:block;font-weight:600;margin-bottom:6px;color:#374151}
+input[type="text"],input[type="password"]{width:100%;padding:10px;border:1px solid #e6eef0;border-radius:8px}
+
+.form-actions{display:flex;gap:12px;align-items:center;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;text-decoration:none;border:none;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--primary),#115e52);color:#fff;font-weight:800}
+.btn-ghost{background:transparent;border:1px solid rgba(15,118,110,0.12);color:var(--primary);padding:9px 12px}
+
+@media (max-width:980px){.payment-body{grid-template-columns:1fr}.invoice-summary{margin-left:0}}

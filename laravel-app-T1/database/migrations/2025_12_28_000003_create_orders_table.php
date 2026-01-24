@@ -9,12 +9,18 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('session_id', 128)->nullable()->index();
-            $table->decimal('total_price', 12, 2)->default(0);
-            $table->string('customer_name');
-            $table->string('customer_phone');
-            $table->text('customer_address')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('order_number')->nullable()->index();
+            $table->decimal('subtotal', 12, 2)->default(0);
+            $table->decimal('tax', 12, 2)->default(0);
+            $table->decimal('total', 12, 2)->default(0);
             $table->enum('status', ['pending','paid','completed','cancelled'])->default('pending');
+            $table->string('payment_status')->default('pending');
+            $table->text('notes')->nullable();
+            $table->string('customer_name')->nullable();
+            $table->string('customer_email')->nullable();
+            $table->string('customer_phone')->nullable();
+            $table->text('customer_address')->nullable();
             $table->timestamps();
         });
     }
